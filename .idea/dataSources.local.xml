@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails SimpleLibrary: test" uuid="24fe3a78-f583-4567-ac48-8c9118cf6432">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails SimpleLibrary: development" uuid="7a9ef236-11e0-4f4c-9f28-b0adca20a168">
+      <database-info product="PostgreSQL" version="10.1" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>pguser</user-name>
+      <introspection-schemas>SimpleLibrary_development:public</introspection-schemas>
+    </data-source>
+    <data-source name="Rails SimpleLibrary: production" uuid="4bfcb628-e488-4396-b5ff-0010c26ac38a">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>SimpleLibrary</user-name>
+    </data-source>
+  </component>
+</project>
