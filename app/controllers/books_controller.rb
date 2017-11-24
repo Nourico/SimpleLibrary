@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  include ApplicationHelper
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :rent, :return]
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = Book.search(params[:select], params[:search])
   end
 
   # GET /books/1
@@ -28,7 +29,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to books_path, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -59,6 +60,16 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def rent
+    rent_it(@book, current_user)
+    redirect_to current_user
+  end
+
+  def return
+    return_it(@book, current_user)
+    redirect_to current_user
   end
 
   private

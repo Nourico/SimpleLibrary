@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <h1>Books</h1>
+
+
+<%= form_tag books_path, :method => 'get'  do %>
+    <p>
+      <%= select_tag :select, "<option>Name</option><option>ISBN</option>".html_safe %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
 
 <table>
   <thead>
@@ -18,14 +29,20 @@
         <td><%= book.name %></td>
         <td><%= book.isbn %></td>
         <td><%= book.quantity %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin == true %>
+            <td><%= link_to 'Edit', edit_book_path(book) %></td>
+            <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+            <% if book.quantity > 0 %>
+                <td><%= link_to 'Reserve', rent_book_path(book) %></td>
+            <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Book', new_book_path %>
+<% if current_user.admin == true %>
+  <%= link_to 'New Book', new_book_path %>
+<% end %>

@@ -1,0 +1,17 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Search books", books_path %></li>
+            <li>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            </li>
+            </ul>
+            </li>
+        <% end %>
+        </ul>
+        </nav>
+  </div>
+</header>

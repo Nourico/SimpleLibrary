@@ -1,0 +1,9 @@
+<h1>Hi <%= @user.email %></h1>
+
+<% if @books.size > 0  %>
+  <p>You have rented the following books:</p>
+<% end %>
+
+<% @books.each do |b| %>
+    <%= b.name %><%= link_to ' Return', return_book_path(b) %><br/><hr/>
+<% end %>

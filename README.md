@@ -21,4 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* The site is hosted on http://peaceful-mesa-39523.herokuapp.com/
